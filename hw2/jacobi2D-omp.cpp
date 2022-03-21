@@ -2,6 +2,7 @@
 // $ g++ -std=c++11 -fopenmp -O3 -march=native jacobi2D-omp.cpp && ./a.out
 
 // $ g++ -O3 -std=c++11 jacobi2D-omp.cpp && ./a.out
+
 #include <stdio.h>
 #include <cmath>
 #include <chrono>
@@ -21,10 +22,10 @@ int main(int argc, char** argv) {
    //int N    = read_option<long>("-N", argc, argv);
    //int T    = read_option<long>("-T", argc, argv);
 
-   int N = 100;
-   int T = 4;
+   int N = 300;   // grid size
+   int T = 1;     // number of threads
 
-   int itm        = 50000;              // max number of iterations
+   int itm        = 300000;              // max number of iterations
    double h = 1.0 / double(N+1);
    double* u     = (double*) malloc((N+2) * (N+2) * sizeof(double));   // u, (N+2) x (N+2) matrix ( includes 2 ghost points per axis)
    double* u_nxt = (double*) malloc((N+2) * (N+2) * sizeof(double));   // next u in iteration
@@ -73,16 +74,23 @@ int main(int argc, char** argv) {
       } 
       //cout << " Current Residual = " << sup_res << endl;
       if ( sup_res < (sup_res_init / fac) ){  // stopping criterion
-         cout << "    "                                              <<                 endl;
-         cout << " Gauss-Seidel has converged, iterations needed : " << n-1          << endl;
-         cout << " Grid Size, N  = "                                 << N            << endl;
-         cout << " Initial Residual "                                << sup_res_init << endl;
-         cout << " Final   Residual "                                << sup_res      << endl;
-         cout << "    "                                              <<                 endl;
+         cout << "    "                                        <<                 endl;
+         cout << " Jacobi has converged, iterations needed : " << n-1          << endl;
+         cout << " Grid Size, N  = "                           << N            << endl;
+         cout << " Initial Residual "                          << sup_res_init << endl;
+         cout << " Final   Residual "                          << sup_res      << endl;
+         cout << "    "                                        <<                 endl;
          break;
       }
       if ( n == itm-1 ) {
-         cout << " Max iteration reached, Jacobi has NOT converged " << endl;
+         cout << "    "                                                <<                 endl;
+         cout << " Jacobi has NOT converged, Max iteration reached = " << n            << endl;         
+         cout << " Grid Size, N  = "                                   << N            << endl;
+         cout << " Initial Residual "                                  << sup_res_init << endl;
+         cout << " Final   Residual "                                  << sup_res      << endl;
+         cout << "    "                                                <<                 endl;
+         break;
+
       }
       // at the end of iteration n, set u = u_nxt:
       for (int i = 1; i < N+1; i++) {

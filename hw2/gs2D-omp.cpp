@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
    //int N    = read_option<long>("-N", argc, argv);
    //int T    = read_option<long>("-T", argc, argv);
 
-   int N = 300;
+   int N = 200;
    int T = 1;
 
    int itm        = 5000;              // max number of iterations
@@ -94,7 +94,12 @@ int main(int argc, char** argv) {
          break;
       }
       if ( n == itm-1 ) {
-         cout << " Max iteration reached, Jacobi has NOT converged " << endl;
+         cout << "    "                                                      <<                 endl;
+         cout << " Gauss-Seidel has NOT converged, Max iteration reached = " << n            << endl; 
+         cout << " Grid Size, N  = "                                         << N            << endl;
+         cout << " Initial Residual "                                        << sup_res_init << endl;
+         cout << " Final   Residual "                                        << sup_res      << endl;
+         cout << "    "                                                      <<                 endl;
       }
       // at the end of iteration n, set u = u_nxt:
       for (int i = 1; i < N+1; i++) {

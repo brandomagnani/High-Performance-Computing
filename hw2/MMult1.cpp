@@ -1,6 +1,7 @@
 // g++ -std=c++11 -fopenmp -O3 -march=native MMult1.cpp && ./a.out
 
 // For parallel version, uncomment below
+
 #include <stdio.h>
 #include <math.h>
 #include <omp.h>
@@ -36,7 +37,7 @@ void MMult1(long m, long n, long k, double *a, double *b, double *c) {
     for (long j = 1; j < N+1; j++){
       for (long k = 1; k < N+1; k++){
 
-       // #pragma omp parallel for collapse(2)      //------ UNCOMMENT THIS FOR OPEN MP PARALLEL VERSION!!!!
+        #pragma omp parallel for collapse(2)      //------ UNCOMMENT THIS FOR OPEN MP PARALLEL VERSION!!!!
         for (long p = (i-1)*bs; p < i*bs; p++) {
           for (long q = (j-1)*bs; q < j*bs; q++) {
             
@@ -57,7 +58,7 @@ void MMult1(long m, long n, long k, double *a, double *b, double *c) {
 
 int main(int argc, char** argv) {
   const long PFIRST = BLOCK_SIZE;
-  const long PLAST = 2000;
+  const long PLAST = 1500;
   const long PINC = std::max(50/BLOCK_SIZE,1) * BLOCK_SIZE; // multiple of BLOCK_SIZE
 
   printf(" Dimension       Time    Gflop/s       GB/s        Error\n");
@@ -86,7 +87,6 @@ int main(int argc, char** argv) {
     }
     double time = t.toc();
     double flops = (2.0*p*p*p*NREPEATS)/(time*(pow(10.0,9.0))); // TODO: calculate from m, n, k, NREPEATS, time
-   //double bandwidth = ((4.0*p*p*p)*NREPEATS) / (time*(pow(10.0,9.0))); // TODO: calculate from m, n, k, NREPEATS, time
     double bandwidth = (NREPEATS*(2.0*p*p + 2.0*p*p*p)*8.0) / (time*(pow(10.0,9.0)));
     printf("%10d %10f %10f %10f", p, time, flops, bandwidth);
 

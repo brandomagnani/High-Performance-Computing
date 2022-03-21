@@ -1,0 +1,202 @@
+COMMENTS TO HPC HW2
+
+
+NOTE: I am running all my code on the NYU Courant Server which I accessed via SSH
+
+
+
+(2):
+
+BLOCKED VERSION
+
+Dimension       Time    Gflop/s       GB/s        Error
+        16   0.586178   3.411941  29.001497 0.000000e+00
+        64   0.587339   3.405457  27.669335 0.000000e+00
+       112   0.585829   3.415020  27.564086 0.000000e+00
+       160   0.589791   3.402971  27.393913 0.000000e+00
+       208   0.595834   3.383084  27.194793 0.000000e+00
+       256   1.765259   1.140494   9.159589 0.000000e+00
+       304   0.615816   3.284750  26.364443 0.000000e+00
+       352   0.632472   3.172082  25.448750 0.000000e+00
+       400   0.633586   3.232396  25.923817 0.000000e+00
+       448   0.688754   3.133149  25.121140 0.000000e+00
+       496   0.706806   3.107542  24.910460 0.000000e+00
+       544   0.756253   2.980284  23.886097 0.000000e+00
+       592   0.638662   3.248586  26.032586 0.000000e+00
+       640   0.705612   2.972104  23.813981 0.000000e+00
+       688   0.819354   3.179681  25.474422 0.000000e+00
+       736   0.767205   3.117980  24.977732 0.000000e+00
+       784   0.933049   3.098810  24.822103 0.000000e+00
+       832   0.777591   2.962639  23.729596 0.000000e+00
+       880   0.911642   2.990086  23.947869 0.000000e+00
+       928   1.101754   2.901478  23.236836 0.000000e+00
+       976   1.336851   2.781803  22.277228 0.000000e+00
+      1024   7.394904   0.290400   2.325473 0.000000e+00
+      1072   0.991787   2.484255  19.892578 0.000000e+00
+      1120   1.065211   2.637841  21.121568 0.000000e+00
+      1168   1.108567   2.874726  23.017495 0.000000e+00
+      1216   1.336871   2.689932  21.537150 0.000000e+00
+      1264   1.700086   2.375748  19.021023 0.000000e+00
+      1312   1.704325   2.650203  21.217786 0.000000e+00
+      1360   1.988703   2.529745  20.252841 0.000000e+00
+      1408   2.310502   2.416193  19.343272 0.000000e+00
+      1456   2.535595   2.434637  19.490471 0.000000e+00
+
+OMP-BLOCKED VERSION
+
+Dimension       Time    Gflop/s       GB/s        Error
+        16   1.411672   1.416762  12.042473 0.000000e+00
+        64   1.225200   1.632516  13.264197 0.000000e+00
+       112   1.372108   1.458061  11.768634 0.000000e+00
+       160   1.207035   1.662786  13.385426 0.000000e+00
+       208   1.244570   1.619641  13.019420 0.000000e+00
+       256   1.103809   1.823926  14.648409 0.000000e+00
+       304   1.316937   1.535989  12.328334 0.000000e+00
+       352   1.372514   1.461737  11.727114 0.000000e+00
+       400   1.119477   1.829425  14.671990 0.000000e+00
+       448   1.263489   1.707945  13.694061 0.000000e+00
+       496   1.027955   2.136700  17.128060 0.000000e+00
+       544   1.011835   2.227486  17.852646 0.000000e+00
+       592   1.464786   1.416417  11.350475 0.000000e+00
+       640   1.356739   1.545730  12.385158 0.000000e+00
+       688   1.653083   1.576016  12.626453 0.000000e+00
+       736   1.362531   1.755651  14.064294 0.000000e+00
+       784   1.646501   1.756053  14.066340 0.000000e+00
+       832   1.311809   1.756140  14.066009 0.000000e+00
+       880   1.498296   1.819325  14.571139 0.000000e+00
+       928   0.814907   3.922799  31.416208 0.000000e+00
+       976   1.057210   3.517614  28.169742 0.000000e+00
+      1024   3.096898   0.693430   5.552861 0.000000e+00
+      1072   0.806666   3.054364  24.457703 0.000000e+00
+      1120   0.865000   3.248389  26.010316 0.000000e+00
+      1168   1.310609   2.431562  19.469149 0.000000e+00
+      1216   1.342232   2.679187  21.451120 0.000000e+00
+      1264   1.311725   3.079133  24.652551 0.000000e+00
+      1312   1.649720   2.737924  21.920085 0.000000e+00
+      1360   2.187050   2.300319  18.416082 0.000000e+00
+      1408   1.888981   2.955360  23.659670 0.000000e+00
+      1456   7.093579   0.870259   6.966856 0.000000e+00
+
+The optimal block size seems to be 16, fits the cache best
+
+
+
+
+
+
+(4):
+
+JACOBI
+
+
+ Jacobi has NOT converged, Max iteration reached = 49999
+ Grid Size, N  = 300
+ Initial Residual 1
+ Final   Residual 0.106427   
+ time              = 26.9451
+ number of threads = 1
+
+ Jacobi has NOT converged, Max iteration reached = 49999
+ Grid Size, N  = 300
+ Initial Residual 1
+ Final   Residual 0.106427   
+ time              = 18.0008
+ number of threads = 4
+
+
+
+
+
+ Jacobi has converged, iterations needed : 29551
+ Grid Size, N  = 100
+ Initial Residual 1
+ Final   Residual 9.99952e-07   
+ time              = 1.12284
+ number of threads = 1
+
+ Jacobi has converged, iterations needed : 29551
+ Grid Size, N  = 100
+ Initial Residual 1
+ Final   Residual 9.99952e-07
+ time              = 1.4481
+ number of threads = 4
+
+
+
+
+
+ Jacobi has converged, iterations needed : 117056
+ Grid Size, N  = 200
+ Initial Residual 1
+ Final   Residual 9.99966e-07 
+ time              = 22.7897
+ number of threads = 1
+
+ Jacobi has converged, iterations needed : 117056
+ Grid Size, N  = 200
+ Initial Residual 1
+ Final   Residual 9.99966e-07   
+ time              = 28.1309
+ number of threads = 4
+
+
+
+
+
+ Jacobi has converged, iterations needed : 262511
+ Grid Size, N  = 300
+ Initial Residual 1
+ Final   Residual 9.9999e-07
+ time              = 138.691
+ number of threads = 1
+
+ Jacobi has converged, iterations needed : 262511
+ Grid Size, N  = 300
+ Initial Residual 1
+ Final   Residual 9.9999e-07
+ time              = 216.664
+ number of threads = 4
+
+
+
+
+
+
+
+
+GAUSS-SEIDEL
+
+
+ Gauss-Seidel has converged, iterations needed : 10
+ Grid Size, N  = 100
+ Initial Residual 1
+ Final   Residual 7.15256e-07 
+ time              = 0.000293612
+ number of threads = 1
+
+ Gauss-Seidel has converged, iterations needed : 10
+ Grid Size, N  = 100
+ Initial Residual 1
+ Final   Residual 7.15256e-07
+ time              = 0.495933
+ number of threads = 4
+
+
+
+
+ Gauss-Seidel has converged, iterations needed : 10
+ Grid Size, N  = 200
+ Initial Residual 1
+ Final   Residual 7.15256e-07   
+ time              = 0.00124572
+ number of threads = 1
+
+ Gauss-Seidel has converged, iterations needed : 10
+ Grid Size, N  = 200
+ Initial Residual 1
+ Final   Residual 7.15256e-07
+ time              = 0.488938
+ number of threads = 4
+
+
+
