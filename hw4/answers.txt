@@ -9,19 +9,19 @@ Running dot.cu, matvec.cu, jacobi2D.cu on various GPUs
 
 1) Two TITAN V (12 GB memory each):
 
-[im975@cuda3 hw4_HPC]$ ./dot 
+[im975@cuda3 hw4_HPC]$ ./dot
 CPU 0.025287 s
 GPU 0.015709 s, 0.000336 s
 c_ref = 4194304.000000
 c = 4194304.000000
 Error = 0.000000
 
-[im975@cuda3 hw4_HPC]$ ./matvec 
+[im975@cuda3 hw4_HPC]$ ./matvec
 CPU 3.870434 s
 GPU 3.173410 s, 0.227378 s
 Error = 0.000000
 
-[im975@cuda3 hw4_HPC]$ ./jacobi2D 
+[im975@cuda3 hw4_HPC]$ ./jacobi2D
 CPU 11.745019 s
 GPU 0.036056 s, 0.035572 s
 Error = 0.000000
@@ -30,7 +30,7 @@ Error = 0.000000
 
 2) Two GeForce RTX 2080 Ti (11 GB memory each)
 
-[im975@cuda2 hw4_HPC]$ ./dot 
+[im975@cuda2 hw4_HPC]$ ./dot
 CPU 0.010063 s
 GPU 0.010566 s, 0.002413 s
 c_ref = 4194304.000000
@@ -42,7 +42,7 @@ CPU 0.337696 s
 GPU 0.110299 s, 0.011715 s
 Error = 0.000000
 
-[im975@cuda2 hw4_HPC]$ ./jacobi2D 
+[im975@cuda2 hw4_HPC]$ ./jacobi2D
 CPU 10.448789 s
 GPU 0.027023 s, 0.026732 s
 Error = 0.000000
@@ -51,19 +51,19 @@ Error = 0.000000
 
 3) Two GeForce GTX TITAN X (12 GB memory each)
 
-[im975@cuda3 hw4_HPC]$ ./dot 
+[im975@cuda3 hw4_HPC]$ ./dot
 CPU 0.024463 s
 GPU 0.018001 s, 0.000334 s
 c_ref = 4194304.000000
 c = 4194304.000000
 Error = 0.000000
 
-[im975@cuda3 hw4_HPC]$ ./matvec 
+[im975@cuda3 hw4_HPC]$ ./matvec
 CPU 0.337976 s
 GPU 0.159475 s, 0.017815 s
 Error = 0.000000
 
-[im975@cuda3 hw4_HPC]$ ./jacobi2D 
+[im975@cuda3 hw4_HPC]$ ./jacobi2D
 CPU 11.796393 s
 GPU 0.042452 s, 0.040478 s
 Error = 0.000000
@@ -74,7 +74,12 @@ Error = 0.000000
 
 Problem 3:
 
-Update on the final project: we produced sequential routines for standard gradient descent and stochastic gradient descent (posted at https://github.com/brandomagnani/HPC-Final-Project). The next step is to parallelize these routines in the most efficient way and report/plot the speedups for various sizes of the data matrix / various degrees of sparsity.
+Update on the final project: we produced sequential routines 
+for standard gradient descent and stochastic gradient descent 
+(posted at https://github.com/brandomagnani/HPC-Final-Project). 
+The next step is to properly parallelize these routines and 
+report/plot the speedups for various sizes of the data matrix / 
+various degrees of sparsity of data matrix. 
 
 
 
